@@ -1,8 +1,13 @@
+
+//tsc -w *.ts comando para crear el watcher
 import {Component} from "angular2/core";
-import {Pelicula} from "./model/pelicula";
+import {PeliculasListComponent} from "./components/peliculas-list.component";
+import {PeliculasFooterComponent} from "./components/peliculas-footer.component";
 @Component({
     selector: "mi-app",
-    templateUrl: "app/view/peliculas.html"
+    templateUrl: "app/view/peliculas.html",
+    directives: [PeliculasListComponent, PeliculasFooterComponent],
+    styleUrls: ["../assets/css/styles.css"]
     /*
     template: `<h1>  {{titulo}}</h1>
                         <ul>
@@ -17,27 +22,8 @@ import {Pelicula} from "./model/pelicula";
 
 export class AppComponent{
     public titulo:string = "Peliculas con Angular 2";
-    public pelicula: Pelicula;
-    /*
-    public pelicula: string ;
-    public director:string ;
-    public anio:number;
-*/
-    constructor(){
-        this.pelicula = new Pelicula(1, "Batman v Superman", "Zack Sniper", 2016);
 
-        /*
-        this.pelicula = "Batman v Superman";
-        this.director = "Zack Snider";
-        this.anio = 2016;
-        //this.holaMundo();
-        */
-        this.debug()
-    }
 
-    debug(){
-        console.log(this.pelicula);
     }
 
 
-}
