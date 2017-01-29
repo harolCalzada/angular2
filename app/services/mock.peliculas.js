@@ -14,7 +14,8 @@ System.register(['../model/pelicula'], function(exports_1, context_1) {
                 new pelicula_1.Pelicula(2, "La verdad duele", "Wilss Smith", 2016),
                 new pelicula_1.Pelicula(3, "El seños de los anillos", "Desconocido", 2013),
                 new pelicula_1.Pelicula(4, "Una historia real", "Desconocido2", 2015),
-                new pelicula_1.Pelicula(5, "Don Jon", "Josep Gordon", 2014)
+                new pelicula_1.Pelicula(5, "Don Jon", "Josep Gordon", 2014),
+                new pelicula_1.Pelicula(6, "Dos tontos muy tontos", "Josep Gordon", 2001)
             ]);
         }
     }
