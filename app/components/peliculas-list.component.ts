@@ -2,9 +2,11 @@
 //tsc -w *.ts comando para crear el watcher
 import {Component} from "angular2/core";
 import {Pelicula} from "../model/pelicula";
+import {PeliculasService} from "../services/peliculas.service";
 @Component({
     selector: "peliculas-list",
     templateUrl: "app/view/peliculas-list.html"
+    providers: [PeliculasService]
 
 
 })
@@ -14,24 +16,16 @@ export class PeliculasListComponent{
     public peliculaElegida: Pelicula;
     public mostrarDatos:boolean;
     public peliculas;
+    public datoServicio;
     /*
     public pelicula: string ;
     public director:string ;
     public anio:number;
 */
-    constructor(){
-
+    constructor(private _peliculasService: PeliculasService){
         this.mostrarDatos = false;
         this.peliculaElegida =  new Pelicula(1, "Batman v Superman", "Zack Sniper", 2016),
-
-        this.peliculas = [
-                new Pelicula(1, "Batman v Superman", "Zack Sniper", 2016),
-                new Pelicula(2, "La verdad duele", "Wilss Smith", 2016),
-                new Pelicula(3, "El seños de los anillos", "Desconocido", 2013),
-                new Pelicula(4, "Una historia real", "Desconocido2", 2015),
-                new Pelicula(5, "Don Jon", "Josep Gordon", 2014)
-        ]
-        this.debug()
+        this.peliculas = _peliculasService.getPeliculas()
         this.pelicula = this.peliculas[0]
     }
 

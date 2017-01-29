@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../model/pelicula"], function(exports_1, context_1) {
+System.register(["angular2/core", "../model/pelicula", "../services/peliculas.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "../model/pelicula"], function(exports_1, cont
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, pelicula_1;
+    var core_1, pelicula_1, peliculas_service_1;
     var PeliculasListComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(["angular2/core", "../model/pelicula"], function(exports_1, cont
             },
             function (pelicula_1_1) {
                 pelicula_1 = pelicula_1_1;
+            },
+            function (peliculas_service_1_1) {
+                peliculas_service_1 = peliculas_service_1_1;
             }],
         execute: function() {
             PeliculasListComponent = (function () {
@@ -27,17 +30,11 @@ System.register(["angular2/core", "../model/pelicula"], function(exports_1, cont
                 public director:string ;
                 public anio:number;
             */
-                function PeliculasListComponent() {
+                function PeliculasListComponent(_peliculasService) {
+                    this._peliculasService = _peliculasService;
                     this.mostrarDatos = false;
                     this.peliculaElegida = new pelicula_1.Pelicula(1, "Batman v Superman", "Zack Sniper", 2016),
-                        this.peliculas = [
-                            new pelicula_1.Pelicula(1, "Batman v Superman", "Zack Sniper", 2016),
-                            new pelicula_1.Pelicula(2, "La verdad duele", "Wilss Smith", 2016),
-                            new pelicula_1.Pelicula(3, "El seños de los anillos", "Desconocido", 2013),
-                            new pelicula_1.Pelicula(4, "Una historia real", "Desconocido2", 2015),
-                            new pelicula_1.Pelicula(5, "Don Jon", "Josep Gordon", 2014)
-                        ];
-                    this.debug();
+                        this.peliculas = _peliculasService.getPeliculas();
                     this.pelicula = this.peliculas[0];
                 }
                 PeliculasListComponent.prototype.debug = function (titulo) {
@@ -59,9 +56,10 @@ System.register(["angular2/core", "../model/pelicula"], function(exports_1, cont
                 PeliculasListComponent = __decorate([
                     core_1.Component({
                         selector: "peliculas-list",
-                        templateUrl: "app/view/peliculas-list.html"
+                        templateUrl: "app/view/peliculas-list.html",
+                        providers: [peliculas_service_1.PeliculasService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [peliculas_service_1.PeliculasService])
                 ], PeliculasListComponent);
                 return PeliculasListComponent;
             }());
