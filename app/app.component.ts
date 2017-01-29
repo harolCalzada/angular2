@@ -21,7 +21,7 @@ import {ROUTER_DIRECTIVES, RouteConfig, Router} from "angular2/router";
 @RouteConfig([
     {path: "/peliculas", name: "Peliculas", component: PeliculasListComponent, useAsDefault: true},
     {path: "/crear-pelicula", name: "CrearPelicula", component: CrearPeliculaComponent},
-    {path: "/crear-pelicula/:titulo", name: "CrearPeliculaBasadaEnOtra", component: CrearPeliculaComponent},
+    {path: "/crear-pelicula/:titulo/:director/:anio", name: "CrearPeliculaBasadaEnOtra", component: CrearPeliculaComponent},
     {path: "/contacto", name: "Contacto", component: ContactoComponent}
 
 ])
