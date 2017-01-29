@@ -5,7 +5,7 @@ import {Pelicula} from "../model/pelicula";
 import {PeliculasService} from "../services/peliculas.service";
 @Component({
     selector: "peliculas-list",
-    templateUrl: "app/view/peliculas-list.html"
+    templateUrl: "app/view/peliculas-list.html",
     providers: [PeliculasService]
 
 
@@ -25,8 +25,8 @@ export class PeliculasListComponent{
     constructor(private _peliculasService: PeliculasService){
         this.mostrarDatos = false;
         this.peliculaElegida =  new Pelicula(1, "Batman v Superman", "Zack Sniper", 2016),
-        this.peliculas = _peliculasService.getPeliculas()
-        this.pelicula = this.peliculas[0]
+        this.peliculas = _peliculasService.getPeliculas();
+        this.pelicula = this.peliculas[0];
     }
 
 
@@ -45,7 +45,7 @@ export class PeliculasListComponent{
 
     onCambiarPelicula(pelicula){
         this.pelicula = pelicula;
-        this.peliculaElegida = pelicula
+        this.peliculaElegida = pelicula;
     }
 
 
