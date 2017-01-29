@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../model/pelicula", "/angular2/router", "../services/peliculas.service"], function(exports_1, context_1) {
+System.register(["angular2/core", "../model/pelicula", "angular2/router", "../services/peliculas.service"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -28,9 +28,11 @@ System.register(["angular2/core", "../model/pelicula", "/angular2/router", "../s
             }],
         execute: function() {
             CrearPeliculaComponent = (function () {
-                function CrearPeliculaComponent(_peliculasService, _router) {
+                function CrearPeliculaComponent(_peliculasService, _router, _routeParams) {
                     this._peliculasService = _peliculasService;
                     this._router = _router;
+                    this._routeParams = _routeParams;
+                    this.TituloPelicula = "";
                 }
                 CrearPeliculaComponent.prototype.onCrearPelicula = function (titulo, director, anio) {
                     var pelicula = new pelicula_1.Pelicula(77, titulo, director, anio);
@@ -38,16 +40,18 @@ System.register(["angular2/core", "../model/pelicula", "/angular2/router", "../s
                     this._router.navigate(["Peliculas"]);
                     console.log('Pelicula', pelicula);
                 };
+                CrearPeliculaComponent.prototype.ngOnInit = function () {
+                    this.TituloPelicula = this._routeParams.get("titulo");
+                };
                 CrearPeliculaComponent = __decorate([
                     core_1.Component({
                         selector: "contacto",
                         templateUrl: "app/view/crear-pelicula.html",
                         providers: [peliculas_service_1.PeliculasService]
                     }), 
-                    __metadata('design:paramtypes', [peliculas_service_1.PeliculasService, (typeof (_a = typeof router_1.Router !== 'undefined' && router_1.Router) === 'function' && _a) || Object])
+                    __metadata('design:paramtypes', [peliculas_service_1.PeliculasService, router_1.Router, router_1.RouteParams])
                 ], CrearPeliculaComponent);
                 return CrearPeliculaComponent;
-                var _a;
             }());
             exports_1("CrearPeliculaComponent", CrearPeliculaComponent);
         }

@@ -1,8 +1,9 @@
 
 //tsc -w *.ts comando para crear el watcher
 import {Component} from "angular2/core";
+import {OnInit} from "angular2/core";
 import {Pelicula} from "../model/pelicula";
-import {Router} from "/angular2/router";
+import {Router, RouteParams} from "angular2/router";
 import {PeliculasService} from "../services/peliculas.service"
 
 @Component({
@@ -13,8 +14,11 @@ import {PeliculasService} from "../services/peliculas.service"
 })
 
 
-export class CrearPeliculaComponent{
-        constructor(private _peliculasService: PeliculasService, private _router: Router){
+export class CrearPeliculaComponent implements OnInit{
+        public TituloPelicula = "";
+        constructor(private _peliculasService: PeliculasService,
+                             private _router: Router,
+                             private _routeParams: RouteParams){
 
         }
 
@@ -23,6 +27,10 @@ export class CrearPeliculaComponent{
             this._peliculasService.insertPelicula(pelicula);
             this._router.navigate(["Peliculas"])
             console.log('Pelicula', pelicula)
+        }
+
+        ngOnInit():any{
+            this.TituloPelicula = this._routeParams.get("titulo");
         }
 
 
